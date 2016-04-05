@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary
+public class Pedidos : MarshalByRefObject, IPedidos
 {
-    public class Class1
-    {
-    }
+
 }
