@@ -1,0 +1,2 @@
+c:\users\luis\documents\visual studio 2015\Projects\tdin-pos\Server\bin\Debug\Server.exe.config
+C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Server\bin\Debug\Server.exe.config
