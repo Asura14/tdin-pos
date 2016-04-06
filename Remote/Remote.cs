@@ -23,8 +23,14 @@ public class Pedidos : MarshalByRefObject, IPedidos
 
     public void adicionaPedido(Pedido pedido)
     {
-        allOrders.Add(pedido);
-        addPedido();
+        try {
+            allOrders.Add(pedido);
+            addPedido();
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 
     public List<Pedido> GetPedidos()

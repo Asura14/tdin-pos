@@ -1,0 +1,8 @@
+C:\Users\admin\IdeaProjects\tdin-pos\Caixa\bin\Release\Caixa.exe.config
+C:\Users\admin\IdeaProjects\tdin-pos\Caixa\bin\Release\Caixa.exe
+C:\Users\admin\IdeaProjects\tdin-pos\Caixa\bin\Release\Caixa.pdb
+C:\Users\admin\IdeaProjects\tdin-pos\Caixa\bin\Release\ClassLibrary.dll
+C:\Users\admin\IdeaProjects\tdin-pos\Caixa\bin\Release\ClassLibrary.pdb
+C:\Users\admin\IdeaProjects\tdin-pos\Caixa\obj\Release\Caixa.csprojResolveAssemblyReference.cache
+C:\Users\admin\IdeaProjects\tdin-pos\Caixa\obj\Release\Caixa.exe
+C:\Users\admin\IdeaProjects\tdin-pos\Caixa\obj\Release\Caixa.pdb

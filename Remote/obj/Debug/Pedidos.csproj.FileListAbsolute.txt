@@ -5,3 +5,10 @@ C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Pedidos\bin\Debug\ClassLibrary.pdb
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Pedidos\obj\Debug\Pedidos.csprojResolveAssemblyReference.cache
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Pedidos\obj\Debug\Pedidos.dll
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Pedidos\obj\Debug\Pedidos.pdb
+C:\Users\admin\IdeaProjects\tdin-pos\Pedidos\bin\Debug\Pedidos.dll
+C:\Users\admin\IdeaProjects\tdin-pos\Pedidos\bin\Debug\Pedidos.pdb
+C:\Users\admin\IdeaProjects\tdin-pos\Pedidos\bin\Debug\ClassLibrary.dll
+C:\Users\admin\IdeaProjects\tdin-pos\Pedidos\bin\Debug\ClassLibrary.pdb
+C:\Users\admin\IdeaProjects\tdin-pos\Pedidos\obj\Debug\Pedidos.csprojResolveAssemblyReference.cache
+C:\Users\admin\IdeaProjects\tdin-pos\Pedidos\obj\Debug\Pedidos.dll
+C:\Users\admin\IdeaProjects\tdin-pos\Pedidos\obj\Debug\Pedidos.pdb
