@@ -1,0 +1,5 @@
+C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Bar\bin\Debug\Bar.exe.config
+C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Bar\bin\Debug\Bar.exe
+C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Bar\bin\Debug\Bar.pdb
+C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Bar\obj\Debug\Bar.exe
+C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Bar\obj\Debug\Bar.pdb
