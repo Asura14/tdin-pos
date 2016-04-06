@@ -1,5 +1,0 @@
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Cozinha\bin\Debug\Cozinha.exe.config
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Cozinha\bin\Debug\Cozinha.exe
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Cozinha\bin\Debug\Cozinha.pdb
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Cozinha\obj\Debug\Cozinha.exe
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Cozinha\obj\Debug\Cozinha.pdb

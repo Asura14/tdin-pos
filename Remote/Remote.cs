@@ -29,7 +29,7 @@ public class Pedidos : MarshalByRefObject, IPedidos
         }
         catch (Exception e)
         {
-
+            throw e;
         }
     }
 
