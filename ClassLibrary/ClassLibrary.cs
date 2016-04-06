@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Remoting;
+
 
 //Delegates
 public delegate void AddPedidoEventHandler();
@@ -34,10 +36,7 @@ public class Pedido
     }
 }
 
-public class Cliente
-{
 
-}
 
 public interface IPedidos
 {
