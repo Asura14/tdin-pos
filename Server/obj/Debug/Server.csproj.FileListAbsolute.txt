@@ -1,7 +1,4 @@
 c:\users\luis\documents\visual studio 2015\Projects\tdin-pos\Server\bin\Debug\Server.exe.config
-C:\Users\admin\IdeaProjects\tdin-pos\Server\bin\Debug\Server.exe
-C:\Users\admin\IdeaProjects\tdin-pos\Server\bin\Debug\ClassLibrary.dll
-C:\Users\admin\IdeaProjects\tdin-pos\Server\bin\Debug\Remote.dll
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Server\bin\Debug\Server.exe.config
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Server\bin\Debug\Server.exe
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Server\bin\Debug\Server.pdb

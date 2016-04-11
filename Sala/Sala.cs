@@ -21,6 +21,7 @@ namespace Sala
         public SortedDictionary<string, float> menuList;
         public SortedDictionary<int, string> mesasList;
         public int[] quantityList = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        public string tipoL;
 
         static void Main()
         {
@@ -31,6 +32,9 @@ namespace Sala
         {
             RemotingConfiguration.Configure("Sala.exe.config", false);
             listaPedidos = (IPedidos)RemoteNew.New(typeof(IPedidos));
+            tipoL = "jose";
+
+            inter = new EventIntermediate();
             //Inicializar Menu
             menuList = new SortedDictionary<string, float>();
             mesasList = new SortedDictionary<int, string>();
@@ -43,6 +47,12 @@ namespace Sala
             comboBoxMesa.DataSource = new BindingSource(mesasList, null);
             comboBoxMesa.DisplayMember = "Value";
             comboBoxMesa.ValueMember = "Key";
+
+            labelTipoMutavel.Text = "Teste";
+
+            //Carregar Lista com Valores
+            atualizaLista(listaPedidos.GetPedidos());
+
             foreach (int type in quantityList)
             {
                 comboBoxQuantidade.Items.Add(type);
@@ -51,14 +61,23 @@ namespace Sala
 
         private void buttonPedir_Click(object sender, EventArgs e)
         {
-            string descricao = ((System.Collections.Generic.KeyValuePair<string, float>)comboBoxMenu.SelectedItem).Key;
-            float preco = ((System.Collections.Generic.KeyValuePair<string, float>)comboBoxMenu.SelectedItem).Value;
-            int quantidade = (int)comboBoxQuantidade.SelectedItem;
-            int mesa = ((System.Collections.Generic.KeyValuePair<int, string>)comboBoxMesa.SelectedItem).Key;
-            Pedido newPedido = new Pedido(listaPedidos.GetPedidos().Count + 1, descricao, quantidade, mesa, 1, preco);
-            listaPedidos.adicionaPedido(newPedido);
+            try {
+                string descricao = ((System.Collections.Generic.KeyValuePair<string, float>)comboBoxMenu.SelectedItem).Key;
+                float preco = ((System.Collections.Generic.KeyValuePair<string, float>)comboBoxMenu.SelectedItem).Value;
+                int quantidade = (int)comboBoxQuantidade.SelectedItem;
+                int mesa = ((System.Collections.Generic.KeyValuePair<int, string>)comboBoxMesa.SelectedItem).Key;
+                Pedido newPedido = new Pedido(listaPedidos.GetPedidos().Count + 1, descricao, quantidade, mesa, 1, preco);
+                listaPedidos.adicionaPedido(newPedido);
+                atualizaLista(listaPedidos.GetPedidos());
+                MessageBox.Show("Pedido adicionado", "Alerta");
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
 
         }
+
 
         public void populateComboMenus()
         {
@@ -76,6 +95,23 @@ namespace Sala
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void atualizaLista(List<Pedido> lista)
+        {
+            gridPedidos.Rows.Clear();
+
+            foreach (Pedido ped in lista)
+            {
+                string[] temp = { ped.id.ToString(), ped.descricao, ped.mesa.ToString(), ped.tipo.ToString(), ped.estado };
+                gridPedidos.Rows.Add(temp);
+            }
+        }
+
+        private void comboBoxMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            labelTipoMutavel.Text = "Texto diferente";
+
         }
     }
 

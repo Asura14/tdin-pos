@@ -38,6 +38,13 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.labelTipo = new System.Windows.Forms.Label();
             this.labelTipoMutavel = new System.Windows.Forms.Label();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mesa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridPedidos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPedidos)).BeginInit();
             this.SuspendLayout();
             // 
             // labelMenu
@@ -58,6 +65,7 @@
             this.comboBoxMenu.Name = "comboBoxMenu";
             this.comboBoxMenu.Size = new System.Drawing.Size(230, 21);
             this.comboBoxMenu.TabIndex = 1;
+            this.comboBoxMenu.SelectedIndexChanged += new System.EventHandler(this.comboBoxMenu_SelectedIndexChanged);
             // 
             // labelMesa
             // 
@@ -98,7 +106,7 @@
             // buttonPedir
             // 
             this.buttonPedir.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPedir.Location = new System.Drawing.Point(381, 281);
+            this.buttonPedir.Location = new System.Drawing.Point(381, 251);
             this.buttonPedir.Name = "buttonPedir";
             this.buttonPedir.Size = new System.Drawing.Size(136, 85);
             this.buttonPedir.TabIndex = 7;
@@ -109,7 +117,7 @@
             // buttonCancelar
             // 
             this.buttonCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancelar.Location = new System.Drawing.Point(21, 281);
+            this.buttonCancelar.Location = new System.Drawing.Point(21, 251);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(136, 85);
             this.buttonCancelar.TabIndex = 8;
@@ -136,11 +144,60 @@
             this.labelTipoMutavel.Size = new System.Drawing.Size(0, 25);
             this.labelTipoMutavel.TabIndex = 10;
             // 
+            // estado
+            // 
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            // 
+            // tipo
+            // 
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.Name = "tipo";
+            this.tipo.ReadOnly = true;
+            // 
+            // mesa
+            // 
+            this.mesa.HeaderText = "Mesa";
+            this.mesa.Name = "mesa";
+            this.mesa.ReadOnly = true;
+            // 
+            // descricao
+            // 
+            this.descricao.HeaderText = "Descrição";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // gridPedidos
+            // 
+            this.gridPedidos.AllowUserToAddRows = false;
+            this.gridPedidos.AllowUserToDeleteRows = false;
+            this.gridPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPedidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.descricao,
+            this.mesa,
+            this.tipo,
+            this.estado});
+            this.gridPedidos.Location = new System.Drawing.Point(21, 355);
+            this.gridPedidos.Name = "gridPedidos";
+            this.gridPedidos.ReadOnly = true;
+            this.gridPedidos.RowTemplate.ReadOnly = true;
+            this.gridPedidos.Size = new System.Drawing.Size(545, 150);
+            this.gridPedidos.TabIndex = 11;
+            // 
             // Sala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 398);
+            this.ClientSize = new System.Drawing.Size(601, 517);
+            this.Controls.Add(this.gridPedidos);
             this.Controls.Add(this.labelTipoMutavel);
             this.Controls.Add(this.labelTipo);
             this.Controls.Add(this.buttonCancelar);
@@ -153,6 +210,7 @@
             this.Controls.Add(this.labelMenu);
             this.Name = "Sala";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.gridPedidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,5 +228,11 @@
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Label labelTipo;
         private System.Windows.Forms.Label labelTipoMutavel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mesa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridView gridPedidos;
     }
 }
