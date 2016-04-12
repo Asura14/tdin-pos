@@ -62,7 +62,7 @@ namespace Sala
         {
             int tipoPedido;
             try {
-                if (comboBoxMenu.SelectedIndex >= 2)
+                if (comboBoxMenu.SelectedIndex >= 5)
                 {
                     tipoPedido = 1; //Bar
                 } else
@@ -73,10 +73,9 @@ namespace Sala
                 float preco = ((System.Collections.Generic.KeyValuePair<string, float>)comboBoxMenu.SelectedItem).Value;
                 int quantidade = (int)comboBoxQuantidade.SelectedItem;
                 int mesa = ((System.Collections.Generic.KeyValuePair<int, string>)comboBoxMesa.SelectedItem).Key;
-                Pedido newPedido = new Pedido(listaPedidos.GetPedidos().Count + 1, descricao, quantidade, mesa, tipoPedido, preco);
+                Pedido newPedido = new Pedido(listaPedidos.GetPedidos().Count + 1, descricao, quantidade, mesa, tipoPedido, preco*quantidade);
                 listaPedidos.adicionaPedido(newPedido);
                 atualizaLista(listaPedidos.GetPedidos());
-                MessageBox.Show("Pedido adicionado", "Alerta");
             }
             catch (Exception exception)
             {
@@ -90,8 +89,12 @@ namespace Sala
         {
             menuList.Add("Bacalhau com natas - 7.50", 7.50f);
             menuList.Add("Francesinha - 9.50", 9.50f);
+            menuList.Add("Espetada de vaca - 6.50", 6.50f);
+            menuList.Add("Picanha - 7.00", 7.00f);
+            menuList.Add("Sopa do dia - 4.50", 4.50f);
             menuList.Add("Cocktail Mexicano - 3.50", 3.50f);
             menuList.Add("Caipirinha - 3.00", 3.00f);
+            menuList.Add("Martini - 2.50", 2.50f);
             mesasList.Add(1, "Mesa 1");
             mesasList.Add(2, "Mesa 2");
             mesasList.Add(3, "Mesa 3");
@@ -122,11 +125,11 @@ namespace Sala
 
         private void devolveTipo()
         {
-            if (comboBoxMenu.SelectedIndex >= 2)
+            if (comboBoxMenu.SelectedIndex >= 5)
             {
                 labelTipoMutavel.Text = "Bar";
             }
-            else if (comboBoxMenu.SelectedIndex >= 0 && comboBoxMenu.SelectedIndex < 2)
+            else if (comboBoxMenu.SelectedIndex >= 0 && comboBoxMenu.SelectedIndex < 5)
             {
                 labelTipoMutavel.Text = "Cozinha";
             }
