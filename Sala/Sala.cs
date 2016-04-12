@@ -32,7 +32,6 @@ namespace Sala
         {
             RemotingConfiguration.Configure("Sala.exe.config", false);
             listaPedidos = (IPedidos)RemoteNew.New(typeof(IPedidos));
-            tipoL = "jose";
 
             inter = new EventIntermediate();
             //Inicializar Menu
@@ -48,8 +47,6 @@ namespace Sala
             comboBoxMesa.DisplayMember = "Value";
             comboBoxMesa.ValueMember = "Key";
 
-            labelTipoMutavel.Text = "Teste";
-
             //Carregar Lista com Valores
             atualizaLista(listaPedidos.GetPedidos());
 
@@ -57,16 +54,26 @@ namespace Sala
             {
                 comboBoxQuantidade.Items.Add(type);
             }
+            comboBoxQuantidade.SelectedIndex = 0;
+            devolveTipo();
         }
 
         private void buttonPedir_Click(object sender, EventArgs e)
         {
+            int tipoPedido;
             try {
-                string descricao = ((System.Collections.Generic.KeyValuePair<string, float>)comboBoxMenu.SelectedItem).Key;
+                if (comboBoxMenu.SelectedIndex >= 2)
+                {
+                    tipoPedido = 1; //Bar
+                } else
+                {
+                    tipoPedido = 0; //Cozinha
+                }
+                    string descricao = ((System.Collections.Generic.KeyValuePair<string, float>)comboBoxMenu.SelectedItem).Key;
                 float preco = ((System.Collections.Generic.KeyValuePair<string, float>)comboBoxMenu.SelectedItem).Value;
                 int quantidade = (int)comboBoxQuantidade.SelectedItem;
                 int mesa = ((System.Collections.Generic.KeyValuePair<int, string>)comboBoxMesa.SelectedItem).Key;
-                Pedido newPedido = new Pedido(listaPedidos.GetPedidos().Count + 1, descricao, quantidade, mesa, 1, preco);
+                Pedido newPedido = new Pedido(listaPedidos.GetPedidos().Count + 1, descricao, quantidade, mesa, tipoPedido, preco);
                 listaPedidos.adicionaPedido(newPedido);
                 atualizaLista(listaPedidos.GetPedidos());
                 MessageBox.Show("Pedido adicionado", "Alerta");
@@ -110,10 +117,16 @@ namespace Sala
 
         private void comboBoxMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBoxMenu.SelectedIndex >= 2)
+            devolveTipo();
+        }
+
+        private void devolveTipo()
+        {
+            if (comboBoxMenu.SelectedIndex >= 2)
             {
                 labelTipoMutavel.Text = "Bar";
-            } else if(comboBoxMenu.SelectedIndex >= 0 && comboBoxMenu.SelectedIndex < 2)
+            }
+            else if (comboBoxMenu.SelectedIndex >= 0 && comboBoxMenu.SelectedIndex < 2)
             {
                 labelTipoMutavel.Text = "Cozinha";
             }

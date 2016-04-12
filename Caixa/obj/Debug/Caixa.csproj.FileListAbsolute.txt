@@ -1,8 +1,0 @@
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Caixa\bin\Debug\Caixa.exe.config
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Caixa\bin\Debug\Caixa.exe
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Caixa\bin\Debug\Caixa.pdb
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Caixa\bin\Debug\ClassLibrary.dll
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Caixa\bin\Debug\ClassLibrary.pdb
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Caixa\obj\Debug\Caixa.csprojResolveAssemblyReference.cache
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Caixa\obj\Debug\Caixa.exe
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Caixa\obj\Debug\Caixa.pdb

@@ -1,4 +1,0 @@
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\ClassLibrary\bin\Debug\ClassLibrary.dll
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\ClassLibrary\bin\Debug\ClassLibrary.pdb
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\ClassLibrary\obj\Debug\ClassLibrary.dll
-C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\ClassLibrary\obj\Debug\ClassLibrary.pdb

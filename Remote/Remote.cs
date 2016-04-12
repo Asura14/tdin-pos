@@ -48,7 +48,7 @@ public class Pedidos : MarshalByRefObject, IPedidos
     {
         try
         {
-            return allOrders.FindAll(x => x.tipo.Equals("bar"));
+            return allOrders.FindAll(x => x.tipo == 1 && x.estado.Equals("pedido"));
         } catch(Exception e)
         {
             throw e;
@@ -59,19 +59,7 @@ public class Pedidos : MarshalByRefObject, IPedidos
     {
         try
         {
-            return allOrders.FindAll(x => x.tipo.Equals("cozinha"));
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
-    }
-
-    public List<Pedido> GetPedidosEmPreparacao()
-    {
-        try
-        {
-            return allOrders.FindAll(x => x.estado.Equals("prep"));
+            return allOrders.FindAll(x => x.tipo == 0 && x.estado.Equals("pedido"));
         }
         catch (Exception e)
         {
@@ -103,24 +91,13 @@ public class Pedidos : MarshalByRefObject, IPedidos
         }
     }
 
-    public List<Pedido> GetPedidosPronto()
-    {
-        try
-        {
-            return allOrders.FindAll(x => x.estado.Equals("pronto"));
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
-    }
-
     public void SetPedidoEntregue(int idPedido)
     {
         try
         {
-            allOrders.Find(x => x.id == idPedido);
-            entreguePedido();
+            Pedido pedido = allOrders.Find(x => x.id == idPedido);
+            pedido.estado = "entregue";
+            //entreguePedido();
         }
         catch (Exception e)
         {
@@ -132,8 +109,9 @@ public class Pedidos : MarshalByRefObject, IPedidos
     {
         try
         {
-            allOrders.Find(x => x.id == idPedido);
-            pagoPedido();
+            Pedido pedido = allOrders.Find(x => x.id == idPedido);
+            pedido.estado = "pago";
+            //pagoPedido();
         }
         catch (Exception e)
         {
@@ -145,8 +123,9 @@ public class Pedidos : MarshalByRefObject, IPedidos
     {
         try
         {
-            allOrders.Find(x => x.id == idPedido);
-            prepPedido();
+            Pedido pedido = allOrders.Find(x => x.id == idPedido);
+            pedido.estado = "preparacao";
+            //prepPedido();
         }
         catch (Exception e)
         {
@@ -158,8 +137,9 @@ public class Pedidos : MarshalByRefObject, IPedidos
     {
         try
         {
-            allOrders.Find(x => x.id == idPedido);
-            prontoPedido();
+            Pedido pedido = allOrders.Find(x => x.id == idPedido);
+            pedido.estado = "pronto";
+            //prontoPedido();
         }
         catch (Exception e)
         {
@@ -167,4 +147,51 @@ public class Pedidos : MarshalByRefObject, IPedidos
         }
     }
 
+    public List<Pedido> GetPedidosEmPreparacaoBar()
+    {
+        try
+        {
+            return allOrders.FindAll(x => x.estado.Equals("preparacao") && x.tipo == 1);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    public List<Pedido> GetPedidosEmPreparacaoCozinha()
+    {
+        try
+        {
+            return allOrders.FindAll(x => x.estado.Equals("preparacao") && x.tipo == 0);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    public List<Pedido> GetPedidosProntoCozinha()
+    {
+        try
+        {
+            return allOrders.FindAll(x => x.estado.Equals("pronto") && x.tipo == 0);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    public List<Pedido> GetPedidosProntoBar()
+    {
+        try
+        {
+            return allOrders.FindAll(x => x.estado.Equals("pronto") && x.tipo == 1);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
 }

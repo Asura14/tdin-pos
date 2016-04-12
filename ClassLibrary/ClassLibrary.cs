@@ -49,8 +49,10 @@ public interface IPedidos
     List<Pedido> GetPedidos();
     List<Pedido> GetPedidosCozinha();
     List<Pedido> GetPedidosBar();
-    List<Pedido> GetPedidosEmPreparacao();
-    List<Pedido> GetPedidosPronto();
+    List<Pedido> GetPedidosEmPreparacaoBar();
+    List<Pedido> GetPedidosEmPreparacaoCozinha();
+    List<Pedido> GetPedidosProntoCozinha();
+    List<Pedido> GetPedidosProntoBar();
     List<Pedido> GetPedidosEntregues();
     List<Pedido> GetPedidosPagos();
 
