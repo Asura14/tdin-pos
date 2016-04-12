@@ -171,23 +171,11 @@ public class Pedidos : MarshalByRefObject, IPedidos
         }
     }
 
-    public List<Pedido> GetPedidosProntoCozinha()
+    public List<Pedido> GetPedidosPronto()
     {
         try
         {
-            return allOrders.FindAll(x => x.estado.Equals("pronto") && x.tipo == 0);
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
-    }
-
-    public List<Pedido> GetPedidosProntoBar()
-    {
-        try
-        {
-            return allOrders.FindAll(x => x.estado.Equals("pronto") && x.tipo == 1);
+            return allOrders.FindAll(x => x.estado.Equals("pronto"));
         }
         catch (Exception e)
         {
