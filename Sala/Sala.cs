@@ -18,7 +18,7 @@ namespace Sala
         private EventIntermediate inter;
         private Panel painelSalas;
         private static Label label1;
-        public SortedDictionary<string, float> menuList;
+        public Dictionary<string, float> menuList;
         public SortedDictionary<int, string> mesasList;
         public int[] quantityList = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         public string tipoL;
@@ -36,7 +36,7 @@ namespace Sala
 
             inter = new EventIntermediate();
             //Inicializar Menu
-            menuList = new SortedDictionary<string, float>();
+            menuList = new Dictionary<string, float>();
             mesasList = new SortedDictionary<int, string>();
             populateComboMenus();
 
@@ -110,8 +110,13 @@ namespace Sala
 
         private void comboBoxMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            labelTipoMutavel.Text = "Texto diferente";
-
+            if(comboBoxMenu.SelectedIndex >= 2)
+            {
+                labelTipoMutavel.Text = "Bar";
+            } else if(comboBoxMenu.SelectedIndex >= 0 && comboBoxMenu.SelectedIndex < 2)
+            {
+                labelTipoMutavel.Text = "Cozinha";
+            }
         }
     }
 

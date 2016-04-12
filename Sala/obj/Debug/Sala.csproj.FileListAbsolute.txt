@@ -6,3 +6,5 @@ C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Sala\bin\Debug\ClassLibrary.pdb
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Sala\obj\Debug\Sala.csprojResolveAssemblyReference.cache
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Sala\obj\Debug\Sala.exe
 C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Sala\obj\Debug\Sala.pdb
+C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Sala\obj\Debug\Sala.Sala.resources
+C:\Users\Luis\Uni\4ano\TDIN\tdin-pos\Sala\obj\Debug\Sala.csproj.GenerateResource.Cache
