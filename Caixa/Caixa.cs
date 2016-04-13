@@ -17,7 +17,7 @@ namespace Caixa
 
         IPedidos listaPedidos;
         EventIntermediate inter;
-        delegate void Dispatcher(List<Pedido> pedidos);
+        delegate void Dispatcher(List<List<Pedido>> pedidos);
 
         public Caixa()
         {
@@ -29,8 +29,7 @@ namespace Caixa
             listaPedidos.deleEvent += new EventDelegate(inter.Repeater);
 
             InitializeComponent();
-
-            atualizaListaPagos(listaPedidos.GetPedidosPronto());
+            atualizaListaPagos(listaPedidos.GetPedidosPorMesa());
         }
 
         static void Main()
@@ -43,7 +42,7 @@ namespace Caixa
             string selecionado = dataGridProntos.SelectedCells[0].Value.ToString();
             int id = Int32.Parse(selecionado);
             listaPedidos.SetPedidoPago(id);
-            atualizaListaPagos(listaPedidos.GetPedidosPronto());
+            atualizaListaPagos(listaPedidos.GetPedidosPorMesa());
 
             printReceipt(listaPedidos.GetPedidosPagos()[listaPedidos.GetPedidosPagos().Count - 1]);
         }
@@ -53,17 +52,20 @@ namespace Caixa
             if (this.dataGridProntos.InvokeRequired)
             {
                 Dispatcher d = new Dispatcher(atualizaListaPagos);
-                this.Invoke(d, new object[] { listaPedidos.GetPedidosPronto() });
+                this.Invoke(d, new object[] { listaPedidos.GetPedidosPorMesa() });
             }
         }
 
-        private void atualizaListaPagos(List<Pedido> lista)
+        private void atualizaListaPagos(List<List<Pedido>> lista)
         {
             dataGridProntos.Rows.Clear();
-            foreach (Pedido ped in lista)
+            foreach (List<Pedido> listaMesa in lista)
             {
-                string[] temp = { ped.id.ToString(), ped.descricao, ped.estado };
-                dataGridProntos.Rows.Add(temp);
+                if (listaMesa.Any())
+                {
+                    string[] temp = { listaMesa[0].mesa.ToString(), calculaPrecoMesa(listaMesa).ToString() };
+                    dataGridProntos.Rows.Add(temp);
+                }
             }
         }
 
@@ -73,6 +75,11 @@ namespace Caixa
             Console.WriteLine("Table: " + pedido.mesa);
             Console.WriteLine(" Product: " + pedido.descricao + "EUR");
             Console.WriteLine(DateTime.Now);
+        }
+
+        private float calculaPrecoMesa(List<Pedido> pedidosMesa)
+        {
+            return pedidosMesa.Sum(x => x.preco);
         }
     }
 }

@@ -165,6 +165,52 @@ public class Pedidos : MarshalByRefObject, IPedidos
         }
     }
 
+    public List<List<Pedido>> GetPedidosPorMesa()
+    {
+        try
+        {
+            List<List<Pedido>> pedidosPorMesa = new List<List<Pedido>>();
+            for (int i=1; i <= 4; i++)
+            {
+                List<Pedido> pedidosMesa = new List<Pedido>();
+                List<Pedido> pedidosProntoMesa = new List<Pedido>();
+                pedidosMesa = allOrders.FindAll(x => x.mesa == i);
+                pedidosProntoMesa = allOrders.FindAll(x => x.mesa == i && x.estado.Equals("pronto"));
+
+                if(pedidosMesa.Count != pedidosProntoMesa.Count)
+                {
+                    pedidosPorMesa.Add(new List<Pedido>());
+                } else
+                {
+                    pedidosPorMesa.Add(pedidosProntoMesa);
+                }
+            }
+            return pedidosPorMesa;
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    public void PagarMesa(int mesa)
+    {
+        try
+        {
+            foreach(Pedido pedido in allOrders)
+            {
+                if(pedido.mesa == mesa)
+                {
+                    pedido.estado = "pago";
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
     void NotifyClient(Operation op, Pedido pedido)
     {
         if (deleEvent != null)

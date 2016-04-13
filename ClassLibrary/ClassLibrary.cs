@@ -41,12 +41,13 @@ public interface IPedidos
     List<Pedido> GetPedidosEmPreparacaoCozinha();
     List<Pedido> GetPedidosPronto();
     List<Pedido> GetPedidosPagos();
+    List<List<Pedido>> GetPedidosPorMesa();
 
     void adicionaPedido(Pedido pedido);
     void SetPedidoPreparacao(int idPedido);
     void SetPedidoPronto(int idPedido);
     void SetPedidoPago(int idPedido);
-
+    void PagarMesa(int mesa);
 }
 
 public enum Operation { Adicionado, Preparado, Pronto, Pago}
