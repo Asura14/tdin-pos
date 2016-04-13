@@ -41,7 +41,7 @@ namespace Caixa
         {
             string selecionado = dataGridProntos.SelectedCells[0].Value.ToString();
             int id = Int32.Parse(selecionado);
-            listaPedidos.SetPedidoPago(id);
+            listaPedidos.PagarMesa(id);
             atualizaListaPagos(listaPedidos.GetPedidosPorMesa());
 
             printReceipt(listaPedidos.GetPedidosPagos()[listaPedidos.GetPedidosPagos().Count - 1]);
