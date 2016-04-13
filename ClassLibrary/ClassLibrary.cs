@@ -5,14 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Remoting;
 
-
-//Delegates
-public delegate void AddPedidoEventHandler();
-public delegate void PrepPedidoEvenHandler();
-public delegate void ProntoPedidoEventHandler();
-public delegate void EntreguePedidoEnventHandler();
-public delegate void PagoPedidoEventHandler();
-
 [Serializable]
 public class Pedido
 {
@@ -40,11 +32,7 @@ public class Pedido
 
 public interface IPedidos
 {
-    event AddPedidoEventHandler addPedido;
-    event PrepPedidoEvenHandler prepPedido;
-    event ProntoPedidoEventHandler prontoPedido;
-    event EntreguePedidoEnventHandler entreguePedido;
-    event PagoPedidoEventHandler pagoPedido;
+    event EventDelegate deleEvent;
 
     List<Pedido> GetPedidos();
     List<Pedido> GetPedidosCozinha();
@@ -57,47 +45,29 @@ public interface IPedidos
     void adicionaPedido(Pedido pedido);
     void SetPedidoPreparacao(int idPedido);
     void SetPedidoPronto(int idPedido);
-    void SetPedidoEntregue(int idPedido);
     void SetPedidoPago(int idPedido);
 
 }
 
+public enum Operation { Adicionado, Preparado, Pronto, Pago}
+public delegate void EventDelegate(Operation op, Pedido pedido);
+
 public class EventIntermediate: MarshalByRefObject
 {
-    public event AddPedidoEventHandler addPedido;
-    public event PrepPedidoEvenHandler prepPedido;
-    public event ProntoPedidoEventHandler prontoPedido;
-    public event EntreguePedidoEnventHandler entreguePedido;
-    public event PagoPedidoEventHandler pagoPedido;
+    public event EventDelegate deleEvent;
 
-    public void FireAddPedido()
-    {
-        addPedido();
-    }
-
-    public void FirePrepPedido()
-    {
-        prepPedido();
-    }
-
-    public void FireProntoPedido()
-    {
-        prontoPedido();
-    }
-
-    public void FireEntreguePedido()
-    {
-        entreguePedido();
-    }
-
-    public void FirePagoPedido()
-    {
-        pagoPedido();
-    }
 
     public override object InitializeLifetimeService()
     {
         Console.WriteLine("[EventIntermediate]: InitializeLifeTimeService");
         return null;
+    }
+
+    public void Repeater(Operation op, Pedido pedido)
+    {
+        if (deleEvent != null)
+        {
+            deleEvent(op, pedido);
+        }
     }
 }

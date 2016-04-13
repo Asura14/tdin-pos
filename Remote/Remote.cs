@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 public class Pedidos : MarshalByRefObject, IPedidos
 {
     List<Pedido> allOrders;
 
-    public event AddPedidoEventHandler addPedido;
-    public event EntreguePedidoEnventHandler entreguePedido;
-    public event PagoPedidoEventHandler pagoPedido;
-    public event PrepPedidoEvenHandler prepPedido;
-    public event ProntoPedidoEventHandler prontoPedido;
+    public event EventDelegate deleEvent;
 
 
     public Pedidos()
@@ -25,7 +21,7 @@ public class Pedidos : MarshalByRefObject, IPedidos
     {
         try {
             allOrders.Add(pedido);
-            addPedido();
+            NotifyClient(Operation.Adicionado, pedido);
         }
         catch (Exception e)
         {
@@ -91,27 +87,13 @@ public class Pedidos : MarshalByRefObject, IPedidos
         }
     }
 
-    public void SetPedidoEntregue(int idPedido)
-    {
-        try
-        {
-            Pedido pedido = allOrders.Find(x => x.id == idPedido);
-            pedido.estado = "entregue";
-            //entreguePedido();
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
-    }
-
     public void SetPedidoPago(int idPedido)
     {
         try
         {
             Pedido pedido = allOrders.Find(x => x.id == idPedido);
             pedido.estado = "pago";
-            //pagoPedido();
+            NotifyClient(Operation.Pago, pedido);
         }
         catch (Exception e)
         {
@@ -125,7 +107,7 @@ public class Pedidos : MarshalByRefObject, IPedidos
         {
             Pedido pedido = allOrders.Find(x => x.id == idPedido);
             pedido.estado = "preparacao";
-            //prepPedido();
+            NotifyClient(Operation.Preparado, pedido);
         }
         catch (Exception e)
         {
@@ -139,7 +121,7 @@ public class Pedidos : MarshalByRefObject, IPedidos
         {
             Pedido pedido = allOrders.Find(x => x.id == idPedido);
             pedido.estado = "pronto";
-            //prontoPedido();
+            NotifyClient(Operation.Pronto, pedido);
         }
         catch (Exception e)
         {
@@ -180,6 +162,30 @@ public class Pedidos : MarshalByRefObject, IPedidos
         catch (Exception e)
         {
             throw e;
+        }
+    }
+
+    void NotifyClient(Operation op, Pedido pedido)
+    {
+        if (deleEvent != null)
+        {
+            Delegate[] invkList = deleEvent.GetInvocationList();
+
+            foreach (EventDelegate handler in invkList)
+            {
+                new Thread(() =>
+                {
+                    try
+                    {
+                        handler(op, pedido);
+                        Console.WriteLine("Invoking Event Handler:" + op.ToString() + " " + pedido.descricao);
+                    } catch (Exception e)
+                    {
+                        deleEvent -= handler;
+                        Console.WriteLine("Exception: " + e.Message);
+                    }
+                }).Start();
+            }
         }
     }
 }

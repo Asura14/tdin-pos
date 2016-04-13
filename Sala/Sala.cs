@@ -16,13 +16,14 @@ namespace Sala
     {
         private IPedidos listaPedidos;
         private EventIntermediate inter;
+        delegate void Dispatcher(List<Pedido> pedidos);
         private Panel painelSalas;
         private static Label label1;
         public Dictionary<string, float> menuList;
         public SortedDictionary<int, string> mesasList;
         public int[] quantityList = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        public string tipoL;
 
+        [STAThread]
         static void Main()
         {
             Application.Run(new Sala());
@@ -34,6 +35,8 @@ namespace Sala
             listaPedidos = (IPedidos)RemoteNew.New(typeof(IPedidos));
 
             inter = new EventIntermediate();
+            inter.deleEvent += DoAlterations;
+            listaPedidos.deleEvent += new EventDelegate(inter.Repeater);
             //Inicializar Menu
             menuList = new Dictionary<string, float>();
             mesasList = new SortedDictionary<int, string>();
@@ -56,6 +59,21 @@ namespace Sala
             }
             comboBoxQuantidade.SelectedIndex = 0;
             devolveTipo();
+        }
+
+        public void DoAlterations(Operation op, Pedido pedido)
+        {
+            if (this.gridPedidos.InvokeRequired)
+            {
+                Dispatcher d = new Dispatcher(atualizaLista);
+                this.Invoke(d, new object[] { listaPedidos.GetPedidos() });
+                Console.WriteLine("Got in here BRO THREAD");
+            }
+            else
+            {
+                atualizaLista(listaPedidos.GetPedidos());
+                Console.WriteLine("Got in here BRO");
+            }
         }
 
         private void buttonPedir_Click(object sender, EventArgs e)
@@ -108,7 +126,8 @@ namespace Sala
         }
 
         private void atualizaLista(List<Pedido> lista)
-        {
+        { 
+
             gridPedidos.Rows.Clear();
 
             foreach (Pedido ped in lista)

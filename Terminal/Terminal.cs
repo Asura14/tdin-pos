@@ -17,7 +17,7 @@ namespace Terminal
             InitializeComponent();
         }
 
-
+        [STAThread]
         static void Main()
         {
             Application.Run(new Terminal());

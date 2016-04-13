@@ -17,12 +17,16 @@ namespace Caixa
 
         IPedidos listaPedidos;
         EventIntermediate inter;
+        delegate void Dispatcher(List<Pedido> pedidos);
 
         public Caixa()
         {
             RemotingConfiguration.Configure("Caixa.exe.config", false);
             listaPedidos = (IPedidos)RemoteNew.New(typeof(IPedidos));
             inter = new EventIntermediate();
+
+            inter.deleEvent += DoAlterations;
+            listaPedidos.deleEvent += new EventDelegate(inter.Repeater);
 
             InitializeComponent();
 
@@ -42,6 +46,15 @@ namespace Caixa
             atualizaListaPagos(listaPedidos.GetPedidosPronto());
 
             printReceipt(listaPedidos.GetPedidosPagos()[listaPedidos.GetPedidosPagos().Count - 1]);
+        }
+
+        private void DoAlterations(Operation op, Pedido pedido)
+        {
+            if (this.dataGridProntos.InvokeRequired)
+            {
+                Dispatcher d = new Dispatcher(atualizaListaPagos);
+                this.Invoke(d, new object[] { listaPedidos.GetPedidosPronto() });
+            }
         }
 
         private void atualizaListaPagos(List<Pedido> lista)

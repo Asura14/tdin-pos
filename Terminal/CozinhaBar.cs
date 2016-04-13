@@ -18,6 +18,7 @@ namespace Terminal
         IPedidos listaPedidos;
         EventIntermediate inter;
         int tipo;
+        delegate void Dispatcher(List<Pedido> pedidos);
 
         public CozinhaBar(int tipo)
         {
@@ -25,6 +26,9 @@ namespace Terminal
             RemotingConfiguration.Configure("Terminal.exe.config", false);
             listaPedidos = (IPedidos)RemoteNew.New(typeof(IPedidos));
             inter = new EventIntermediate();
+
+            inter.deleEvent += DoAlterations;
+            listaPedidos.deleEvent += new EventDelegate(inter.Repeater);
 
             InitializeComponent();
 
@@ -40,58 +44,122 @@ namespace Terminal
             }
         }
 
+        private void DoAlterations(Operation op, Pedido pedido)
+        {
+            if(this.dataGridPedidos.InvokeRequired)
+            {
+                if (this.tipo == 0)
+                {
+
+                    Dispatcher d = new Dispatcher(atualizaListaPedidos);
+                    this.Invoke(d, new object[] { listaPedidos.GetPedidosCozinha() });
+                    Dispatcher e = new Dispatcher(atualizaListaPreparacao);
+                    this.Invoke(e, new object[] { listaPedidos.GetPedidosEmPreparacaoCozinha() });
+
+                    Console.WriteLine("DoAlterations COZINHA THREAD");
+                }
+                else
+                {
+
+
+                    Dispatcher d = new Dispatcher(atualizaListaPedidos);
+                    this.Invoke(d, new object[] { listaPedidos.GetPedidosBar() });
+                    Dispatcher e = new Dispatcher(atualizaListaPreparacao);
+                    this.Invoke(e, new object[] { listaPedidos.GetPedidosEmPreparacaoBar() });
+
+                    Console.WriteLine("DoAlterations BAR THREAD");
+                }
+            }
+            else
+            {
+                if (this.tipo == 0) //Cozinha
+                {
+                    atualizaListaPedidos(listaPedidos.GetPedidosCozinha());
+                    atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoCozinha());
+                }
+                else //Bar
+                {
+                    atualizaListaPedidos(listaPedidos.GetPedidosBar());
+                    atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoBar());
+                }
+
+            }
+        }
+
         private void buttonPreparacao_Click(object sender, EventArgs e)
         {
-            string selecionado = dataGridPedidos.SelectedCells[0].Value.ToString();
-            int id = Int32.Parse(selecionado);
-            listaPedidos.SetPedidoPreparacao(id);
-            if (this.tipo == 0) //Cozinha
+            try
             {
-                atualizaListaPedidos(listaPedidos.GetPedidosCozinha());
-                atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoCozinha());
-            }
-            else //Bar
+
+                string selecionado = dataGridPedidos.SelectedCells[0].Value.ToString();
+                int id = Int32.Parse(selecionado);
+                listaPedidos.SetPedidoPreparacao(id);
+                if (this.tipo == 0) //Cozinha
+                {
+                    atualizaListaPedidos(listaPedidos.GetPedidosCozinha());
+                    atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoCozinha());
+                }
+                else //Bar
+                {
+                    atualizaListaPedidos(listaPedidos.GetPedidosBar());
+                    atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoBar());
+                }
+            }catch (Exception exc)
             {
-                atualizaListaPedidos(listaPedidos.GetPedidosBar());
-                atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoBar());
+                Console.WriteLine("Exception: " + exc.Message);
             }
         }
 
         private void buttonPronto_Click(object sender, EventArgs e)
         {
-            string selecionado = dataGridPreparacao.SelectedCells[0].Value.ToString();
-            int id = Int32.Parse(selecionado);
-            listaPedidos.SetPedidoPronto(id);
-            if (this.tipo == 0) //Cozinha
+            try {
+                string selecionado = dataGridPreparacao.SelectedCells[0].Value.ToString();
+                int id = Int32.Parse(selecionado);
+                listaPedidos.SetPedidoPronto(id);
+                if (this.tipo == 0) //Cozinha
+                {
+                    atualizaListaPedidos(listaPedidos.GetPedidosCozinha());
+                    atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoCozinha());
+                }
+                else //Bar
+                {
+                    atualizaListaPedidos(listaPedidos.GetPedidosBar());
+                    atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoBar());
+                }
+            }catch (Exception exc)
             {
-                atualizaListaPedidos(listaPedidos.GetPedidosCozinha());
-                atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoCozinha());
-            }
-            else //Bar
-            {
-                atualizaListaPedidos(listaPedidos.GetPedidosBar());
-                atualizaListaPreparacao(listaPedidos.GetPedidosEmPreparacaoBar());
+                Console.WriteLine("Exception: " + exc.Message);
             }
         }
 
         private void atualizaListaPedidos(List<Pedido> lista)
         {
-            dataGridPedidos.Rows.Clear();
-            foreach (Pedido ped in lista)
+            try
             {
-                string[] temp = { ped.id.ToString(), ped.descricao, ped.estado };
-                dataGridPedidos.Rows.Add(temp);
+                dataGridPedidos.Rows.Clear();
+                foreach (Pedido ped in lista)
+                {
+                    string[] temp = { ped.id.ToString(), ped.descricao, ped.estado };
+                    dataGridPedidos.Rows.Add(temp);
+                }
+            } catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
             }
         }
 
         private void atualizaListaPreparacao(List<Pedido> lista)
         {
-
-            dataGridPreparacao.Rows.Clear();
-            foreach (Pedido ped in lista)
+            try {
+                dataGridPreparacao.Rows.Clear();
+                foreach (Pedido ped in lista)
+                {
+                    string[] temp = { ped.id.ToString(), ped.descricao, ped.estado };
+                    dataGridPreparacao.Rows.Add(temp);
+                }
+            } catch (Exception e)
             {
-                string[] temp = { ped.id.ToString(), ped.descricao, ped.estado };
-                dataGridPreparacao.Rows.Add(temp);
+                Console.WriteLine("Exception: " + e.Message);
             }
         }
     }
