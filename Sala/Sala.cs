@@ -97,7 +97,8 @@ namespace Sala
             }
             catch (Exception exception)
             {
-                throw exception;
+                Console.WriteLine("Exception: " + exception.Message);
+                MessageBox.Show("Nenhum Item selecionado", "Alerta");
             }
 
         }

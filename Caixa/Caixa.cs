@@ -39,12 +39,19 @@ namespace Caixa
 
         private void buttonPago_Click(object sender, EventArgs e)
         {
-            string selecionado = dataGridProntos.SelectedCells[0].Value.ToString();
-            int id = Int32.Parse(selecionado);
-            listaPedidos.PagarMesa(id);
-            atualizaListaPagos(listaPedidos.GetPedidosPorMesa());
+            try
+            {
+                string selecionado = dataGridProntos.SelectedCells[0].Value.ToString();
+                int id = Int32.Parse(selecionado);
+                listaPedidos.PagarMesa(id);
+                atualizaListaPagos(listaPedidos.GetPedidosPorMesa());
 
-            printReceipt(id);
+                printReceipt(id);
+            } catch (Exception exception)
+            {
+                Console.WriteLine("Exception: " + exception.Message);
+                MessageBox.Show("Nenhum Item selecionado", "Alerta");
+            }
         }
 
         private void DoAlterations(Operation op, Pedido pedido)

@@ -107,6 +107,7 @@ namespace Terminal
             }catch (Exception exc)
             {
                 Console.WriteLine("Exception: " + exc.Message);
+                MessageBox.Show("Nenhum Item selecionado", "Alerta");
             }
         }
 
@@ -129,6 +130,7 @@ namespace Terminal
             }catch (Exception exc)
             {
                 Console.WriteLine("Exception: " + exc.Message);
+                MessageBox.Show("Nenhum Item selecionado", "Alerta");
             }
         }
 
