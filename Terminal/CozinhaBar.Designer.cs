@@ -31,10 +31,12 @@
             this.dataGridPedidos = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridPreparacao = new System.Windows.Forms.DataGridView();
             this.idprep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoPrep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidade2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadoPrep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonPreparacao = new System.Windows.Forms.Button();
             this.buttonPronto = new System.Windows.Forms.Button();
@@ -52,12 +54,13 @@
             this.dataGridPedidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.descricao,
+            this.quantidade,
             this.estado});
             this.dataGridPedidos.Location = new System.Drawing.Point(14, 65);
             this.dataGridPedidos.Name = "dataGridPedidos";
             this.dataGridPedidos.ReadOnly = true;
             this.dataGridPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPedidos.Size = new System.Drawing.Size(344, 350);
+            this.dataGridPedidos.Size = new System.Drawing.Size(452, 350);
             this.dataGridPedidos.TabIndex = 0;
             // 
             // id
@@ -71,6 +74,12 @@
             this.descricao.HeaderText = "Descrição";
             this.descricao.Name = "descricao";
             this.descricao.ReadOnly = true;
+            // 
+            // quantidade
+            // 
+            this.quantidade.HeaderText = "Quantidade";
+            this.quantidade.Name = "quantidade";
+            this.quantidade.ReadOnly = true;
             // 
             // estado
             // 
@@ -86,12 +95,13 @@
             this.dataGridPreparacao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idprep,
             this.descricaoPrep,
+            this.quantidade2,
             this.estadoPrep});
-            this.dataGridPreparacao.Location = new System.Drawing.Point(472, 65);
+            this.dataGridPreparacao.Location = new System.Drawing.Point(490, 65);
             this.dataGridPreparacao.Name = "dataGridPreparacao";
             this.dataGridPreparacao.ReadOnly = true;
             this.dataGridPreparacao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPreparacao.Size = new System.Drawing.Size(343, 350);
+            this.dataGridPreparacao.Size = new System.Drawing.Size(445, 350);
             this.dataGridPreparacao.TabIndex = 1;
             // 
             // idprep
@@ -106,6 +116,12 @@
             this.descricaoPrep.Name = "descricaoPrep";
             this.descricaoPrep.ReadOnly = true;
             // 
+            // quantidade2
+            // 
+            this.quantidade2.HeaderText = "Quantidade";
+            this.quantidade2.Name = "quantidade2";
+            this.quantidade2.ReadOnly = true;
+            // 
             // estadoPrep
             // 
             this.estadoPrep.HeaderText = "Estado";
@@ -115,7 +131,7 @@
             // buttonPreparacao
             // 
             this.buttonPreparacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPreparacao.Location = new System.Drawing.Point(185, 421);
+            this.buttonPreparacao.Location = new System.Drawing.Point(170, 421);
             this.buttonPreparacao.Name = "buttonPreparacao";
             this.buttonPreparacao.Size = new System.Drawing.Size(154, 84);
             this.buttonPreparacao.TabIndex = 2;
@@ -138,7 +154,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 11);
+            this.label1.Location = new System.Drawing.Point(5, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(310, 39);
             this.label1.TabIndex = 4;
@@ -148,7 +164,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(473, 11);
+            this.label2.Location = new System.Drawing.Point(480, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(378, 39);
             this.label2.TabIndex = 5;
@@ -158,7 +174,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 517);
+            this.ClientSize = new System.Drawing.Size(954, 517);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonPronto);
@@ -180,13 +196,15 @@
         private System.Windows.Forms.DataGridView dataGridPreparacao;
         private System.Windows.Forms.Button buttonPreparacao;
         private System.Windows.Forms.Button buttonPronto;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn idprep;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricaoPrep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantidade2;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoPrep;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
     }
 }

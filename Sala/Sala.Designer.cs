@@ -209,7 +209,7 @@
             this.Controls.Add(this.comboBoxMenu);
             this.Controls.Add(this.labelMenu);
             this.Name = "Sala";
-            this.Text = "Form1";
+            this.Text = "Bar";
             ((System.ComponentModel.ISupportInitialize)(this.gridPedidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

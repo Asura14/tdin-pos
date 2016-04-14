@@ -17,8 +17,6 @@ namespace Sala
         private IPedidos listaPedidos;
         private EventIntermediate inter;
         delegate void Dispatcher(List<Pedido> pedidos);
-        private Panel painelSalas;
-        private static Label label1;
         public Dictionary<string, float> menuList;
         public SortedDictionary<int, string> mesasList;
         public int[] quantityList = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };

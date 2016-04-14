@@ -141,7 +141,7 @@ namespace Terminal
                 dataGridPedidos.Rows.Clear();
                 foreach (Pedido ped in lista)
                 {
-                    string[] temp = { ped.id.ToString(), ped.descricao, ped.estado };
+                    string[] temp = { ped.id.ToString(), ped.descricao, ped.quantidade.ToString() , ped.estado };
                     dataGridPedidos.Rows.Add(temp);
                 }
             } catch (Exception e)
@@ -156,13 +156,18 @@ namespace Terminal
                 dataGridPreparacao.Rows.Clear();
                 foreach (Pedido ped in lista)
                 {
-                    string[] temp = { ped.id.ToString(), ped.descricao, ped.estado };
+                    string[] temp = { ped.id.ToString(), ped.descricao, ped.quantidade.ToString(), ped.estado };
                     dataGridPreparacao.Rows.Add(temp);
                 }
             } catch (Exception e)
             {
                 Console.WriteLine("Exception: " + e.Message);
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
