@@ -132,7 +132,15 @@ namespace Sala
 
             foreach (Pedido ped in lista)
             {
-                string[] temp = { ped.id.ToString(), ped.descricao, ped.mesa.ToString(), ped.tipo.ToString(), ped.estado };
+                string tipoTmp;
+                if(ped.tipo == 0)
+                {
+                    tipoTmp = "Cozinha";                }
+                else
+                {
+                    tipoTmp = "Bar";
+                }
+                string[] temp = { ped.id.ToString(), ped.descricao, ped.mesa.ToString(), tipoTmp, ped.estado };
                 gridPedidos.Rows.Add(temp);
             }
         }
