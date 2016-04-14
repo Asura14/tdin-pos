@@ -44,7 +44,7 @@ namespace Caixa
             listaPedidos.PagarMesa(id);
             atualizaListaPagos(listaPedidos.GetPedidosPorMesa());
 
-            printReceipt(listaPedidos.GetPedidosPagos()[listaPedidos.GetPedidosPagos().Count - 1]);
+            printReceipt(id);
         }
 
         private void DoAlterations(Operation op, Pedido pedido)
@@ -69,11 +69,19 @@ namespace Caixa
             }
         }
 
-        private void printReceipt(Pedido pedido)
+        private void printReceipt(int mesa)
         {
-            Console.WriteLine("========== RECEIPT FOR ORDER: " + pedido.id + " ==========");
-            Console.WriteLine("Table: " + pedido.mesa);
-            Console.WriteLine(" Product: " + pedido.descricao + "EUR");
+            List<Pedido> pedidosMesa = listaPedidos.GetPedidoMesaPago(mesa);
+
+            Console.WriteLine("========== RECEIPT FOR TABLE: " + mesa + " ==========");
+            float totalPrice = 0;
+            foreach (var pedido in pedidosMesa)
+            {
+                Console.WriteLine(" Product: " + pedido.descricao + " EUR");
+                Console.WriteLine(" Quantity: " + pedido.quantidade.ToString() + " UN");
+                totalPrice += pedido.preco;
+            }
+            Console.WriteLine("Total Price: " + totalPrice.ToString() + " EUR");
             Console.WriteLine(DateTime.Now);
         }
 

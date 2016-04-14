@@ -193,6 +193,11 @@ public class Pedidos : MarshalByRefObject, IPedidos
         }
     }
 
+    public List<Pedido> GetPedidoMesaPago(int mesa)
+    {
+        return allOrders.FindAll(x => x.mesa == mesa && x.estado.Equals("pago"));
+    }
+
     public void PagarMesa(int mesa)
     {
         try

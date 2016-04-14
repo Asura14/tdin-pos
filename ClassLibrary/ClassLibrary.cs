@@ -42,6 +42,7 @@ public interface IPedidos
     List<Pedido> GetPedidosPronto();
     List<Pedido> GetPedidosPagos();
     List<List<Pedido>> GetPedidosPorMesa();
+    List<Pedido> GetPedidoMesaPago(int mesa);
 
     void adicionaPedido(Pedido pedido);
     void SetPedidoPreparacao(int idPedido);
