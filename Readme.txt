@@ -14,5 +14,5 @@ Read me
 			4.2 After pressing the "Pago" button the receipt regarding that specific order is printed on the console.
 
 	Project by:
-		João Almeida 
-		Luís Gonçalves
+		João Almeida - nº201206113
+		Luís Gonçalves - nº201207141

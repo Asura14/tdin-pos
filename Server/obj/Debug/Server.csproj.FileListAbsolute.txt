@@ -9,3 +9,13 @@ C:\Users\admin\IdeaProjects\tdin-pos\Server\bin\Debug\Remote.pdb
 C:\Users\admin\IdeaProjects\tdin-pos\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
 C:\Users\admin\IdeaProjects\tdin-pos\Server\obj\Debug\Server.exe
 C:\Users\admin\IdeaProjects\tdin-pos\Server\obj\Debug\Server.pdb
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\bin\Debug\Server.exe.config
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\bin\Debug\Server.exe
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\bin\Debug\Server.pdb
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\bin\Debug\ClassLibrary.dll
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\bin\Debug\Remote.dll
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\bin\Debug\ClassLibrary.pdb
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\bin\Debug\Remote.pdb
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\obj\Debug\Server.exe
+C:\Users\admin\Downloads\tdin-pos-Final\tdin-pos - Final\Server\obj\Debug\Server.pdb
