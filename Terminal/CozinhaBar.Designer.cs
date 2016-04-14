@@ -57,7 +57,7 @@
             this.dataGridPedidos.Name = "dataGridPedidos";
             this.dataGridPedidos.ReadOnly = true;
             this.dataGridPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPedidos.Size = new System.Drawing.Size(430, 350);
+            this.dataGridPedidos.Size = new System.Drawing.Size(344, 350);
             this.dataGridPedidos.TabIndex = 0;
             // 
             // id
@@ -91,7 +91,7 @@
             this.dataGridPreparacao.Name = "dataGridPreparacao";
             this.dataGridPreparacao.ReadOnly = true;
             this.dataGridPreparacao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPreparacao.Size = new System.Drawing.Size(430, 350);
+            this.dataGridPreparacao.Size = new System.Drawing.Size(343, 350);
             this.dataGridPreparacao.TabIndex = 1;
             // 
             // idprep
@@ -115,7 +115,7 @@
             // buttonPreparacao
             // 
             this.buttonPreparacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPreparacao.Location = new System.Drawing.Point(119, 421);
+            this.buttonPreparacao.Location = new System.Drawing.Point(185, 421);
             this.buttonPreparacao.Name = "buttonPreparacao";
             this.buttonPreparacao.Size = new System.Drawing.Size(154, 84);
             this.buttonPreparacao.TabIndex = 2;
@@ -126,7 +126,7 @@
             // buttonPronto
             // 
             this.buttonPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPronto.Location = new System.Drawing.Point(590, 421);
+            this.buttonPronto.Location = new System.Drawing.Point(638, 421);
             this.buttonPronto.Name = "buttonPronto";
             this.buttonPronto.Size = new System.Drawing.Size(154, 84);
             this.buttonPronto.TabIndex = 3;
@@ -138,7 +138,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 11);
+            this.label1.Location = new System.Drawing.Point(12, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(310, 39);
             this.label1.TabIndex = 4;
@@ -148,7 +148,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(492, 11);
+            this.label2.Location = new System.Drawing.Point(473, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(378, 39);
             this.label2.TabIndex = 5;
@@ -158,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 517);
+            this.ClientSize = new System.Drawing.Size(863, 517);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonPronto);
